@@ -71,6 +71,7 @@ export class SliderComponent implements OnInit {
   }
 
   onDragaction(e){
+    // console.log('drag action');
     e = e || window.event;
 
     if (e.type == 'touchmove') {
@@ -84,27 +85,41 @@ export class SliderComponent implements OnInit {
   }
 
   shiftSlide(dir, action){
+    // console.log('action ' + action);
       this.slideItems.nativeElement.classList.add('shifting');
 
+      // console.log('this.allowShift ' + this.allowShift);
       if(this.allowShift) {
-        if(!action) { this.posInitial = this.slideItems.nativeElement.offsetLeft;}
+        if(!action) { 
+          this.posInitial = this.slideItems.nativeElement.offsetLeft;
+          // console.log(this.posInitial);
+        }
 
         if(dir == 1){
           this.slideItems.nativeElement.style.left = (this.posInitial - this.slideSize) + 'px';
           this.index++;
+        } else if(dir == -1){
+          this.slideItems.nativeElement.style.left = (this.posInitial + this.slideSize) + 'px';
+          this.index--;
         }
       }
       this.allowShift = false;
   }
 
   checkIndex(){
+    // console.log('checkIndex');
     this.slideItems.nativeElement.classList.remove('shifting');
 
     if(this.index == -1) {
       this.slideItems.nativeElement.style.left = -(this.slidesLength * this.slideSize) + 'px';
-      this.index = 0;
+      this.index = this.slidesLength - 1;
     }
 
+    if(this.index == this.slidesLength){
+      this.slideItems.nativeElement.style.left = -(1 * this.slideSize) + 'px';
+      this.index = 0;
+    }
+    // console.log('inside checkindex ' + this.allowShift);
     this.allowShift = true;
   }
   

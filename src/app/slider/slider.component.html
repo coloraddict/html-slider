@@ -1,15 +1,13 @@
 <div id="slider" class="slider" #slider>
   <div class="wrapper">
-    <div id="slides" class="slides" #slideItems (transitionend)="checkIndex()">
-      <span 
-          class="slide" 
-          (mousedown)="onDragstart($event)" 
-          (touchstart)="onDragstart()"
-          (touchend)="onDragend()"
-          (touchmove)="onDragaction()"
-          >
-          Slide 1
-      </span>
+    <div id="slides" class="slides" #slideItems 
+      (transitionend)="checkIndex()"
+      (mousedown)="onDragstart($event)" 
+      (touchstart)="onDragstart($event)"
+      (touchend)="onDragend($event)"
+      (touchmove)="onDragaction($event)"
+      >
+      <span class="slide">Slide 1</span>
       <span class="slide">Slide 2</span>
       <span class="slide">Slide 3</span>
       <span class="slide">Slide 4</span>
