@@ -54,6 +54,7 @@ body {
   position: relative;
   background: #FFCF47;
   border-radius: 2px;
+  text-align: center;
 }
 
 .slider.loaded .slide:nth-child(2),
